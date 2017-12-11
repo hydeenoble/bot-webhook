@@ -1,0 +1,24 @@
+{
+  "name": "student_bot",
+  "version": "1.0.0",
+  "description": "This is my final year project, it is supposed to be a chatbot that simulates pat-advisers to student interactions in OAU",
+  "main": "api.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Chat-bot",
+    "final year project",
+    "student bot",
+    "educational bot"
+  ],
+  "author": "Emehinola Idowu <hydeenoble39@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "class.extend": "^0.9.2",
+    "config.json": "0.0.4",
+    "express": "^4.16.2",
+    "mongoose": "^4.13.6"
+  }
+}

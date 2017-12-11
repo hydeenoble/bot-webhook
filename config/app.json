@@ -1,0 +1,32 @@
+{
+    "app_name":"Student Bot",
+    "app_version":"1.0.0",
+    "app_url":"127.0.0.1",
+    "app_base": "/bot",
+    "api":{
+        "_url":"/api",
+        "_version":"/1.0",
+        "_port":8081
+    },
+    "init_port":8080,
+    "mongodb":{
+        "host":"ds135486.mlab.com",
+        "username":"root",
+        "password":"root",
+        "port":"35486",
+        "db":"student_bot",
+        "collections":{
+            "course":"bot_course"
+        }
+    },
+    "local_mongodb":{
+        "host":"127.0.0.1",
+        "username":"",
+        "password":"",
+        "port":"27017",
+        "db":"student_bot",
+        "collections":{
+            "course":"bot_course"
+        }
+    }
+}
