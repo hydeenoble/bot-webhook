@@ -8,10 +8,10 @@ var schemaDef = new Schema({
     code: {type: String, unique: true},
     title: {type: String},
     unit: {type: Number},
-    prerequisites: {type: String},
-    level: {type: Number},
+    prerequisite: {type: String},
+    level: {type: String},
     semester: {type: String},
-    option: {type: Number}
+    option: {type: String}
 });
 
 var courseSchema = mongoose.model(_collection.course, schemaDef);
