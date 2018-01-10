@@ -5,7 +5,7 @@ var _collection = _config.mongodb.collections;
 var Schema = mongoose.Schema;
 
 var schemaDef = new Schema({
-    code: {type: String, unique: true},
+    code: {type: String},
     title: {type: String},
     unit: {type: Number},
     prerequisite: {type: String},

@@ -80,11 +80,11 @@ var initDAO = {
 
     pull: function (param, callback) {
         courseModel.search(Util.extract_search_data(param,_config.api_query_limit), function (state) {
-            var response = Resp.error({msg:'No data found for Query',resp:null})
-            if(state.total > 0 && state.hits.length > 0){
+            var response = Resp.error({msg:'No data found for Query',resp:null});
+            if(state && state.length > 0){
                 var resp = state;
-                if(param.count) resp = state.total;
-                response = Resp.success({msg:state.total+" data found",resp:resp});
+                // if(param.count) resp = state.total;
+                response = Resp.success({msg:state.length+" data found",resp:state});
             }
             return callback(response)
         });
