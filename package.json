@@ -4,7 +4,8 @@
   "description": "This is my final year project, it is supposed to be a chatbot that simulates pat-advisers to student interactions in OAU",
   "main": "api.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node api.js"
   },
   "keywords": [
     "Chat-bot",
