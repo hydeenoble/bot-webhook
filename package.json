@@ -16,6 +16,7 @@
   "author": "Emehinola Idowu <hydeenoble39@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "apiai": "^4.0.3",
     "body-parser": "^1.18.2",
     "class.extend": "^0.9.2",
     "config.json": "0.0.4",
