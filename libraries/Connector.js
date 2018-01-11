@@ -8,7 +8,9 @@ var dbURI = 'mongodb://' + _config.mongodb.username + ':' + _config.mongodb.pass
 
 
 // Create the database connection
-mongoose.connect(dbURI);
+mongoose.connect(dbURI, {
+    useMongoClient: true,
+});
 
 // CONNECTION EVENTS
 // When successfully connected
