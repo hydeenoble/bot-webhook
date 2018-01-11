@@ -160,7 +160,7 @@ app.get('/webhook', (req, res) => {
 
 
 
-app.listen(_config.api._port, function() {
+app.listen(process.env.PORT || _config.api._port, function() {
     console.log('%s version %s.. Listening at http://[:]%s%s%s',_config.app_name,_config.app_version,
         _config.api._port,_config.app_base,_config.api._url+_config.api._version
     );
