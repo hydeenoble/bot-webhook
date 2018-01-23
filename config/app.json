@@ -6,7 +6,7 @@
     "api":{
         "_url":"/api",
         "_version":"/1.0",
-        "_port":5000
+        "_port":3000
     },
     "init_port":8080,
     "mongodb":{

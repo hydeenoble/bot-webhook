@@ -3,8 +3,8 @@ let _config = require('config.json')('./config/app.json');
 var mongoose = require( 'mongoose' );
 
 // Build the connection string
-var dbURI = 'mongodb://' + _config.mongodb.username + ':' + _config.mongodb.password + '@' + _config.mongodb.host + ':' + _config.mongodb.port + '/' + _config.mongodb.db;
-// var dbURI = 'mongodb://' + _config.local_mongodb.host + ':' + _config.local_mongodb.port + '/' + _config.local_mongodb.db;
+// var dbURI = 'mongodb://' + _config.mongodb.username + ':' + _config.mongodb.password + '@' + _config.mongodb.host + ':' + _config.mongodb.port + '/' + _config.mongodb.db;
+var dbURI = 'mongodb://' + _config.local_mongodb.host + ':' + _config.local_mongodb.port + '/' + _config.local_mongodb.db;
 
 
 // Create the database connection

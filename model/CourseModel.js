@@ -25,6 +25,20 @@ var courseModel = {
                 return callback(data);
             });
     },
+    getPrerequisite: function(param, callback){
+        courseSchema.findOne({}, 'prerequisite').where('code', param)
+        .exec(function(err, data){
+            if (err) return callback(courseModel.handleError(err));
+            return callback(data);
+        });
+    },
+    getCourse: function(param, callback){
+        courseSchema.findOne({}).where('code', param)
+        .exec(function(err, data){
+            if (err) return callback(courseModel.handleError(err));
+            return callback(data);
+        });
+    },
     handleError: function(report){
         return {"error":true,"message":report};
     }
