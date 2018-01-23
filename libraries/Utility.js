@@ -1,3 +1,6 @@
+let _config = require('config.json')('./config/app.json');
+const apiaiApp = require('apiai')(_config.apiai.key);
+
 var Utility = {
     rand_str:function(len,charset){
         if(!len) len = 3;
@@ -274,9 +277,41 @@ var Utility = {
         } catch (e) { return false;
         }
         return true;
+    },
+    sendMessage: function(event) {
+        let sender = event.sender.id;
+        let text = event.message.text;
+    
+        let apiai = apiaiApp.textRequest(text, {
+        sessionId: 'tabby_cat' // use any arbitrary id
+        });
+    
+        apiai.on('response', (response) => {
+            let aiText = response.result.fulfillment.speech;
+        
+            request({
+                url: 'https://graph.facebook.com/v2.6/me/messages',
+                qs: {access_token: _config.apiai.access_token},
+                method: 'POST',
+                json: {
+                recipient: {id: sender},
+                message: {text: aiText}
+                }
+            }, (error, response) => {
+                if (error) {
+                    console.log('Error sending message: ', error);
+                } else if (response.body.error) {
+                    console.log('Error: ', response.body.error);
+                }
+            });
+        });
+    
+        apiai.on('error', (error) => {
+            console.log(error);
+        });
+    
+        apiai.end();
     }
-
-
-
 };
+
 module.exports = Utility;

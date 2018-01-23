@@ -28,5 +28,10 @@
         "collections":{
             "course":"bot_course"
         }
+    },
+    "apiai":{
+        "verify_token": "ololade95",
+        "key": "d2e7924e603641ce831d853597a8cb74",
+        "access_token": "EAAWeOtMv0ZBABAAMFoJjDLI45jsGaZAmvCpnbiapwDwZCb5jlrdyZB01yeKT1LNaRlFUlgIKBLgitGW9blHW738ZCcDGWs6FmfdYswUMceK4OTsG5Q2BCp6d2SzJY3DvVZAbQRkzXZBWvRvMe284RktbuPamFSdwZCUqzDyun2k7fwZDZD"
     }
 }
