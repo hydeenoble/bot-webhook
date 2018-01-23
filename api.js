@@ -80,6 +80,24 @@ app.get('/webhook', (req, res) => {
             });
           });
         break;
+        case "details":
+        var course = req.body.result.parameters.course;
+        courseModel.getCourse(course, function(data){
+          var response = data.code + " ("+ data.title +")" + " is a " + data.level + " level course." +
+          " it is takes " + data.unit + " units of the total units of " + data.semester + " courses. it is majorly for " 
+          + data.option + " option";
+
+          if (data.prerequisite){
+            response +=  "and it's prerequisite is " + data.prerequisite;
+          }
+          
+          return res.json({
+            speech: response,
+            displayText: response,
+            source: 'agent'
+          });
+        });
+        break;
 
         default:
         console.log("There must have been an error!");
