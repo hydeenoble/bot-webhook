@@ -32,9 +32,14 @@ router.post('/ai', (req, res) => {
         case "prerequisite":
             var course = req.body.result.parameters.course;
             courseModel.getPrerequisite(course, function(data){
+                let response = `Hurray!, there is no prerequisite for ${course}.`;
+                
+                if (data.prerequisite){
+                    response = `Oops!, prerequisite for ${course} is, ${data.prerequisite}.`;
+                }
                 return res.json({
-                    speech: "The prerequisite for " + course + ' is ' + data.prerequisite,
-                    displayText: "The prerequisite for " + course + ' is ' + data.prerequisite,
+                    speech: response,
+                    displayText: response,
                     source: 'agent'
                 });
             });
