@@ -52,7 +52,7 @@ router.post('/ai', (req, res) => {
             + data.option + " option";
 
             if (data.prerequisite){
-            response +=  "and it's prerequisite is " + data.prerequisite;
+                response +=  "and it's prerequisite is " + data.prerequisite;
             }
             
             return res.json({
