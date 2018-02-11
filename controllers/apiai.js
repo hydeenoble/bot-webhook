@@ -62,7 +62,9 @@ router.post('/ai', (req, res) => {
             });
         });
         break;
-
+        case "result":
+        console.log(req.body.result.parameters);
+        break;
         default:
         console.log("There must have been an error!");
     }

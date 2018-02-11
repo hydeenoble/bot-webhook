@@ -5,7 +5,7 @@ var _config = require('config.json')('./config/app.json');
 var api_url = _config.app_base+_config.api._url+_config.api._version;
 
 
-router.use(api_url+'/course', require('./course'))
+router.use(api_url+'/course', require('./course'));
 router.use('/', require('./webhook'));
 router.use('/', require('./apiai'));
 
