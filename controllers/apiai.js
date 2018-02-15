@@ -1,5 +1,7 @@
 var express = require('express'), router = express.Router();
 var courseModel = require('./../model/CourseModel');
+var courseDAO = require('../dao/CourseDAO');
+var resultDAO = require('../dao/ResultDAO');
 
 router.get('/', function(req, res){
     res.send('working');
@@ -63,7 +65,41 @@ router.post('/ai', (req, res) => {
         });
         break;
         case "result":
-        console.log(req.body.result.parameters);
+            let result_params = req.body.result.parameters;
+            
+            courseDAO.checkCourseAccess(result_params.level, result_params.course, function (response) {
+                if(response){
+                    var body = `Hello Sir/Ma, <br /> <br/>
+                        A student just logged a complain, here are the details below: <br/><br/>
+                        <b>Matric Number: </b> ${result_params.matric_number}.
+                        <br/>
+                        <b>Course: </b> ${result_params.course}.
+                        <br/>
+                        <b>level: </b> ${result_params.level}.
+                        <br/>
+                        <b>complaint: </b> ${result_params.complaint}.
+                        <br/><br/>
+                        Best Regards, <br/>
+                        Adviser | Bot.`;
+
+                    resultDAO.sendMail(body, function(resp){
+                        console.log("Mail callback", resp);
+                    });
+
+                    return res.json({
+                        speech: "Your complaint has been logged to the appropriate authorities, you should be contacted within 24hours, if you are not contacted within this time, please go and see your Part-Adviser.",
+                        displayText: "Your complaint has been logged to the appropriate authorities, you should be contacted within 24hours, if you are not contacted within this time, please go and see your Part-Adviser.",
+                        source: 'agent'
+                    });
+                    
+                }else{
+                    return res.json({
+                        speech: "Sorry, you can't complaint about a result for a course beyond your level.",
+                        displayText: "Sorry, you can complaint about a result for a course beyond your level.",
+                        source: 'agent'
+                    });
+                }
+            });
         break;
         default:
         console.log("There must have been an error!");

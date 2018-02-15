@@ -39,6 +39,15 @@ var initDAO = {
         }
     },
 
+    checkCourseAccess: function (level, course, callback) {
+        courseModel.getCourse(course, function (response) {
+            if (response.level > level){
+                return callback(false);
+            }else{
+                return callback(true);
+            }
+        });
+    },
 
     // update: function (param, callback) {
     //     var error = [];
