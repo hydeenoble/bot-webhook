@@ -9,27 +9,49 @@ router.get('/', function(req, res){
 
 
 router.post('/ai', (req, res) => {
+
+    // console.log("ddtdh",req.body.result.contexts);
+    // console.log("ddtdh",req.body.result);
+
+
     switch(req.body.result.action){
         
-        case "course":
-        console.log(req.body.result.parameters);
-        var params = req.body.result.parameters;
+        case "course-registration-option":
+            let contexts = req.body.result.contexts;
 
-        var response = "The courses to register for " + params.semester + ', ' 
-        + params.level + ' level ('+ params.option +' option) are: \n\n';
+            let params = {};
 
-        courseModel.getCourses(params, function(data){
-            data.forEach(function(item){
-            response += "Course Code: " + item.code + '\n' + 
-                "Course Title: " + item.title + '\n' + 
-                "Course Unit: " + item.unit + '\n\n';
+            contexts.forEach(context => {
+                if (context.name === 'generic'){
+                    params = context.parameters;
+                }
             });
-            return res.json({
-            speech: response,
-            displayText: response,
-            source: 'agent'
+
+            console.log("params", params);
+
+            if(!params.option || !params.level || !params.semester){
+                return res.json({
+                    speech: "Please start the request by entering your current level",
+                    displayText: "Please start the request by entering your current level",
+                    source: 'agent'
+                });
+            }
+
+            let response = "The courses to register for " + params.semester + ', '
+            + params.level + ' level ('+ params.option +' option) are: \n\n';
+
+            courseModel.getCourses(params, function(data){
+                data.forEach(function(item){
+                response += "Course Code: " + item.code + '\n' +
+                    "Course Title: " + item.title + '\n' +
+                    "Course Unit: " + item.unit + '\n\n';
+                });
+                return res.json({
+                    speech: response,
+                    displayText: response,
+                    source: 'agent'
+                });
             });
-        });
         break;
         case "prerequisite":
             var course = req.body.result.parameters.course;
