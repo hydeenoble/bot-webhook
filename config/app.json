@@ -1,0 +1,42 @@
+{
+    "app_name":"Student Bot",
+    "app_version":"1.0.0",
+    "app_url":"127.0.0.1",
+    "app_base": "/bot",
+    "api":{
+    "_url":"/api",
+        "_version":"/1.0",
+        "_port":3000
+},
+    "init_port":8080,
+    "mongodb":{
+    "host":"ds135486.mlab.com",
+        "username":"root",
+        "password":"root",
+        "port":"35486",
+        "db":"student_bot",
+        "collections":{
+        "course":"bot_course"
+    }
+},
+    "local_mongodb":{
+    "host":"127.0.0.1",
+        "username":"",
+        "password":"",
+        "port":"27017",
+        "db":"student_bot",
+        "collections":{
+        "course":"bot_course"
+    }
+},
+    "apiai" : {
+    "verify_token": "ololade95",
+        "key": "d2e7924e603641ce831d853597a8cb74",
+        "access_token": "EAAWeOtMv0ZBABAAMFoJjDLI45jsGaZAmvCpnbiapwDwZCb5jlrdyZB01yeKT1LNaRlFUlgIKBLgitGW9blHW738ZCcDGWs6FmfdYswUMceK4OTsG5Q2BCp6d2SzJY3DvVZAbQRkzXZBWvRvMe284RktbuPamFSdwZCUqzDyun2k7fwZDZD"
+},
+    "mail": {
+    "user": "postmaster@sandboxfe66de0cc33b48ad937fbc330391f1bf.mailgun.org",
+        "password": "f307f1789b660fa85cd91918998f143d",
+        "receiver": "hydeenoble39@gmail.com"
+}
+}
